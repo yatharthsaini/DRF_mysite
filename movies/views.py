@@ -7,6 +7,9 @@ from rest_framework import status
 
 
 class MovieView(APIView):
+    """
+    Simple view for storing a new queryset into the model
+    """
     serializer_class = MovieDataSerializer
     queryset = MovieData.objects.all()
 
@@ -16,6 +19,4 @@ class MovieView(APIView):
             return Response({'Message': 'Serializer is not valid'}, status=status.HTTP_400_BAD_REQUEST)
         serializer.save()
         return Response({'Content': 'OK'}, status=status.HTTP_200_OK)
-
-
 
